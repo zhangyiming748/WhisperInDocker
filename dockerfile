@@ -4,6 +4,7 @@
 FROM golang:1.22.1-bookworm
 # 用于存储程序和视频字幕文件的文件夹
 VOLUME /srt
+RUN apt update && apt full-upgrade
 RUN apt install -y ffmpeg python3 python3-pip vim nano mediainfo wget git
 RUN mkdir /module
 RUN wget https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt -O /module/base.pt --no-check-certificate
