@@ -1,0 +1,37 @@
+# .github/workflows/release.yml
+name: goreleaser
+
+on:
+  pull_request:
+  push:
+    # run only against tags
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+  # packages: write
+  # issues: write
+
+jobs:
+  dockerbuilder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pwd
+        run: pwd
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: find
+        run: find / -name "dockerfile"
+      - name: build
+        run: docker build -t whisper:latest .
+      # More assembly might be required: Docker logins, GPG, etc.
+      # It all depends on your needs.
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }}

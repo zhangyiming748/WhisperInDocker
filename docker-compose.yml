@@ -1,0 +1,18 @@
+version: "3.9"
+name: use-whisper
+services:
+  golang1.21.5-alpine3.19:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    container_name: test3
+#    environment:
+#      - APPID=appid
+#      - KEY=key
+#    volumes:
+#      - /path/to/srt:/srt
+#      - /path/to/sqlite:/data
+#    image: golang:1.22.0-bookworm
+    command: bash
