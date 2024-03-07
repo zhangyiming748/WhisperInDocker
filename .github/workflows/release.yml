@@ -26,9 +26,11 @@ jobs:
           fetch-depth: 0
       - name: build
         run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
+      - name: export
+        # run: docker save whisper:latest -o whisper.tar
+        run: docker save whisper:latest | xz > whisper.tar
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
-
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
