@@ -29,8 +29,8 @@ jobs:
       - name: saveSpace
         run: rm -rf /opt/hostedtoolcache
       - name: export
-        # run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar
-        run: docker save whisper:latest -o whisper.tar
+        run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar
+        # run: docker save whisper:latest -o whisper.tar
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: Upload Build Artifacts
