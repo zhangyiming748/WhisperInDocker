@@ -7,6 +7,7 @@ on:
     # run only against tags
     tags:
       - "*"
+    branches: [ "master" ]
 
 permissions:
   contents: write
@@ -23,10 +24,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: find
-        run: find / -name "dockerfile"
       - name: build
-        run: docker build -t whisper:latest .
+        run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
 
