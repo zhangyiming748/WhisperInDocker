@@ -1,6 +1,6 @@
 # 基础镜像
 # docker pull golang:1.22.1-bookworm
-# docker run -dit --name=test usewhisper:v0.0.1 -v /mnt/e/video/srt:/srt -e language=en bash
+# docker run -dit --name=test usewhisper:latest -v /mnt/e/video/srt:/srt -e language=en bash
 FROM golang:1.22.1-bookworm
 # 用于存储程序和视频字幕文件的文件夹
 VOLUME /srt
