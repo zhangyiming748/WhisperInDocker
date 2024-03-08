@@ -4,6 +4,7 @@
 FROM golang:1.22.1-bookworm
 # 用于存储程序和视频字幕文件的文件夹
 VOLUME /srt
+COPY srt /usr/local/bin/srt
 # RUN sed -i 's/deb.debian.org/mirrors4.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update && apt full-upgrade
 RUN apt install -y ffmpeg python3 python3-pip vim nano mediainfo wget git
@@ -15,8 +16,8 @@ RUN go env -w GO111MODULE=on
 # RUN go env -w GOPROXY=https://goproxy.cn,direct
 # RUN git clone https://github.com/zhangyiming748/WhisperInDocker.git /root/WhisperInDocker
 # WORKDIR /root/WhisperInDocker
-RUN go mod tidy
-COPY srt /usr/local/bin/srt
+# RUN go mod tidy
+
 CMD ["srt"]
 # docker build -t trans:v1 .
 # docker run -itd --name=trans1 -v /d/srt:/srt zhangyiming748/use-whisper:v0.0.3 bash
