@@ -1,42 +1,38 @@
-# .github/workflows/release.yml
-name: goreleaser
-
-on:
-  pull_request:
-  push:
-    # run only against tags
-    tags:
-      - "*"
-    branches: [ "master" ]
-
-permissions:
-  contents: write
-  # packages: write
-  # issues: write
-
-jobs:
-  dockerbuilder:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: go
-        run: go build -o srt main.go
-      - name: pwd
-        run: pwd
-      - name: build
-        run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
-      - name: saveSpace
-        run: rm -rf /opt/hostedtoolcache
-      - name: export
-        run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar
-        # run: docker save whisper:latest -o whisper.tar
-      # More assembly might be required: Docker logins, GPG, etc.
-      # It all depends on your needs.
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}
+## .github/workflows/release.yml
+#name: mainreleaser
+#
+#on:
+#  pull_request:
+#  push:
+#    tags:
+#      - "*"
+#    branches: [ "master" ]
+#
+#permissions:
+#  contents: write
+#  packages: write
+#  issues: write
+#
+#jobs:
+#  dockerbuilder:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          fetch-depth: 0
+#      - name: go
+#        run: go build -o srt main.go
+#      - name: pwd
+#        run: pwd
+#      - name: build
+#        run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
+#      - name: saveSpace
+#        run: rm -rf /opt/hostedtoolcache
+#      - name: export
+#        run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar
+#      - name: Upload Build Artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: workspace_artifacts
+#          path: ${{ github.workspace }}
