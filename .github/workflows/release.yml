@@ -18,12 +18,14 @@ jobs:
   dockerbuilder:
     runs-on: ubuntu-latest
     steps:
-      - name: pwd
-        run: pwd
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: go
+        run: go build main.go
+      - name: pwd
+        run: pwd
       - name: build
         run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
       - name: export
