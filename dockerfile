@@ -13,10 +13,10 @@ RUN mkdir /module
 RUN wget https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt -O /module/base.pt --no-check-certificate
 RUN go env -w GO111MODULE=on
 # RUN go env -w GOPROXY=https://goproxy.cn,direct
-RUN git clone https://github.com/zhangyiming748/WhisperInDocker.git /root/WhisperInDocker
-WORKDIR /root/WhisperInDocker
+# RUN git clone https://github.com/zhangyiming748/WhisperInDocker.git /root/WhisperInDocker
+# WORKDIR /root/WhisperInDocker
 RUN go mod tidy
-RUN go build -o /usr/local/bin/srt main.go
+COPY srt /usr/local/bin/srt
 CMD ["srt"]
 # docker build -t trans:v1 .
 # docker run -itd --name=trans1 -v /d/srt:/srt zhangyiming748/use-whisper:v0.0.3 bash

@@ -23,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: go
-        run: go build main.go
+        run: go build -o srt main.go
       - name: pwd
         run: pwd
       - name: build
