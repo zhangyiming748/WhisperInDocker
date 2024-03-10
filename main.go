@@ -17,19 +17,31 @@ func init() {
 }
 func main() {
 	util.ExitAfterRun()
-	root := "/srt"
-	level := "base"
-	location := "/root/module"
-	language := os.Getenv("language")
-	if language == "" {
-		language = "en"
+	var (
+		root     string
+		language string
+	)
+
+	if root = os.Getenv("root"); root != "" {
+		fmt.Printf("读取到环境变量，默认root修改为%s\n", root)
+	} else {
+		root = "/srt"
+		fmt.Printf("未读取到环境变量，默认root修改为%s\n", root)
+
 	}
+	if language = os.Getenv("language"); language != "" {
+		fmt.Printf("读取到环境变量，默认language修改为%s\n", language)
+	} else {
+		language = "en"
+		fmt.Printf("读取到环境变量，默认language修改为%s\n", language)
+	}
+
 	files := GetFileInfo.GetAllFileInfo(root, "mp4;mp3")
 	for _, file := range files {
 		slog.Info("文件", slog.String("文件名", file.FullPath))
 		//whisper true.mp4 --model base --language English --model_dir /Users/zen/Whisper --output_format srt
 		//cmd := exec.Command("whisper", file.FullPath, "--model", level, "--model_dir", location, "--language", language, "--output_dir", root, "--verbose", "True")
-		cmd := exec.Command("whisper", file.FullPath, "--threads", "4", "--model", level, "--model_dir", location, "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", language, "--output_dir", root, "--verbose", "True")
+		cmd := exec.Command("whisper", file.FullPath, "--threads", "4", "--model", "base", "--model_dir", "/root/module", "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", language, "--output_dir", root, "--verbose", "True")
 		err := util.ExecCommand(cmd)
 		if err != nil {
 			slog.Error("当前字幕生成错误", slog.String("命令原文", fmt.Sprint(cmd)), slog.String("错误原文", err.Error()))
