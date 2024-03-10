@@ -8,5 +8,5 @@ docker load -i whisper.tar
 docker run -dit --name=test --rm -v /e/video/srt:/srt -e language=ja whisper:v0.0.1 srt
 docker run -dit --name=test --rm -v /mnt/d/git/RemoveIntroOutro:/srt -e language=en whisper:latest bash
 docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro:/srt -e language=en whisper:latest srt
-docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro:/srt -e language=ja whisper:latest srt
+docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro/jp:/srt -e language=ja whisper:latest srt
 ```
