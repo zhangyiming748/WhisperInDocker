@@ -20,6 +20,7 @@ func main() {
 	var (
 		root     string
 		language string
+		pattern  string
 	)
 
 	if root = os.Getenv("root"); root != "" {
@@ -35,8 +36,14 @@ func main() {
 		language = "en"
 		fmt.Printf("读取到环境变量，默认language修改为%s\n", language)
 	}
+	if pattern = os.Getenv("pattern"); pattern != "" {
+		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
+	} else {
+		pattern = "mp4;mp3"
+		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
+	}
 
-	files := GetFileInfo.GetAllFileInfo(root, "mp4;mp3")
+	files := GetFileInfo.GetAllFileInfo(root, pattern)
 	for _, file := range files {
 		slog.Info("文件", slog.String("文件名", file.FullPath))
 		//whisper true.mp4 --model base --language English --model_dir /Users/zen/Whisper --output_format srt
