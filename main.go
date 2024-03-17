@@ -61,7 +61,7 @@ func setLog() {
 		AddSource: true,
 		Level:     slog.LevelDebug, // slog 默认日志级别是 info
 	}
-	file := "Process.log"
+	file := "Whisper.log"
 	logf, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0770)
 	if err != nil {
 		panic(err)
