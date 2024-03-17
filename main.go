@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/zhangyiming748/GetFileInfo"
 	"github.com/zhangyiming748/WhisperInDocker/sql"
 	"github.com/zhangyiming748/WhisperInDocker/util"
 	"io"
@@ -39,12 +38,12 @@ func main() {
 	if pattern = os.Getenv("pattern"); pattern != "" {
 		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
 	} else {
-		pattern = "mp4;mp3"
+		pattern = "mp4"
 		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
 	}
 
 	//files := GetFileInfo.GetAllFileInfo(root, pattern)
-	files, _ := GetFileInfo.GetAllFileInfoFast(root, pattern)
+	files, _ := util.GetAllFileInfoFast(root, pattern)
 	for _, file := range files {
 		slog.Info("文件", slog.String("文件名", file))
 		//whisper true.mp4 --model base --language English --model_dir /Users/zen/Whisper --output_format srt
@@ -55,7 +54,6 @@ func main() {
 			slog.Error("当前字幕生成错误", slog.String("命令原文", fmt.Sprint(cmd)), slog.String("错误原文", err.Error()))
 		}
 	}
-	in()
 }
 
 func setLog() {
@@ -70,24 +68,4 @@ func setLog() {
 	}
 	logger := slog.New(slog.NewJSONHandler(io.MultiWriter(logf, os.Stdout), &opt))
 	slog.SetDefault(logger)
-}
-
-func in() {
-	dir := util.GetVal("Whisper", "srt")
-	files := GetFileInfo.GetAllFileInfo(dir, "srt")
-	for _, file := range files {
-		lines := util.ReadByLine(file.FullPath)
-		for i := 0; i < len(lines); i += 4 {
-			if i+3 > len(lines) {
-				continue
-			}
-			w := new(sql.Whisper)
-			w.Name = file.PurgeName
-			w.No = lines[i]
-			w.Duration = lines[i+1]
-			w.Srt = lines[i+2]
-			w.SetOne()
-			slog.Info("入库前", slog.Any("结构体", w))
-		}
-	}
 }

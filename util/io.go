@@ -6,6 +6,8 @@ import (
 	"io"
 	"log/slog"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 func ReadByLine(fp string) []string {
@@ -44,4 +46,26 @@ func WriteByLine(fp string, s []string) {
 	writer.Flush()
 	return
 
+}
+
+/*
+获取目录下符合条件的所有文件基础信息
+*/
+func GetAllFileInfoFast(dir, pattern string) ([]string, error) {
+	var files []string
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if !info.IsDir() && strings.HasSuffix(info.Name(), pattern) {
+			files = append(files, path)
+		}
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return files, nil
 }
