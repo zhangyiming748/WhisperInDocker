@@ -14,4 +14,6 @@ docker run -dit --name=whisper_ja --rm -v '/f/srt:/srt' -e language=Japanese whi
 docker run -dit --name=whisper_de --rm -v '/f/Telegram/srt/cut/en:/srt' -e language=German whisper:latest srt
 docker run -dit --name=whisper_de --rm -v '/f/Telegram/srt/cut/de:/srt' -e language=German whisper:latest srt
 
+docker run -dit --name=whisper_en --rm -v /f/srt:/srt -v /d/git/WhisperInDocker:/data -e language=English whisper:latest bash
+
 ```
