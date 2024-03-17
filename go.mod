@@ -1,6 +1,6 @@
 module WhisperInDocker
 
-go 1.22
+go 1.21
 
 require (
 	github.com/zhangyiming748/GetFileInfo v0.0.41
