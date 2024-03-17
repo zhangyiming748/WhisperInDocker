@@ -8,6 +8,7 @@ github.com/zhangyiming748/GetAllFolder v0.0.20 h1:1HR+wKCP6lYIUXXpxcmp4ba1U8n6uz
 github.com/zhangyiming748/GetAllFolder v0.0.20/go.mod h1:uhdqD8XPoOOVj9ywdbAh0CkGaM7kJpfQEiwPjk9NSD4=
 github.com/zhangyiming748/GetFileInfo v0.0.40 h1:1uDayfWABDINIvUDWyi6TdMjOdOYnPTqrIKQ/MF+DnQ=
 github.com/zhangyiming748/GetFileInfo v0.0.40/go.mod h1:D76EP151kuBY59SWz0nU3XdyDEPPUyFZxHq0cJCgvj8=
+github.com/zhangyiming748/GetFileInfo v0.0.41/go.mod h1:D76EP151kuBY59SWz0nU3XdyDEPPUyFZxHq0cJCgvj8=
 github.com/zhangyiming748/filetype v0.0.1 h1:C7a49LHKzqiYAiw/u2lTmPU6gP6Nwb6/sSDBmBMoJ/k=
 github.com/zhangyiming748/filetype v0.0.1/go.mod h1:DFFw06VgsQVSriUKe95IC+HKaY4u6hCCbXJE1L1HNUk=
 github.com/zhangyiming748/goini v0.0.2 h1:fulHMA/+rPjyzcq+uZ55eFRaYPe71pltUAf8DjLH+BA=
