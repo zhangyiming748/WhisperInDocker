@@ -1,12 +1,13 @@
-module github.com/zhangyiming748/WhisperInDocker
+module WhisperInDocker
 
-go 1.21
+go 1.22
 
 require (
 	github.com/zhangyiming748/GetFileInfo v0.0.41
+	github.com/zhangyiming748/WhisperInDocker v0.0.5
 	github.com/zhangyiming748/goini v0.0.2
-	gorm.io/driver/sqlite v1.5.4
-	gorm.io/gorm v1.25.5
+	gorm.io/driver/sqlite v1.5.5
+	gorm.io/gorm v1.25.7
 )
 
 require (
