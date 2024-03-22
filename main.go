@@ -23,23 +23,23 @@ func main() {
 	)
 
 	if root = os.Getenv("root"); root != "" {
-		fmt.Printf("读取到环境变量，默认root修改为%s\n", root)
+		fmt.Printf("读取到环境变量，默认$root修改为%s\n", root)
 	} else {
 		root = "/srt"
-		fmt.Printf("未读取到环境变量，默认root修改为%s\n", root)
+		fmt.Printf("未读取到环境变量，默认$root修改为%s\n", root)
 
 	}
 	if language = os.Getenv("language"); language != "" {
-		fmt.Printf("读取到环境变量，默认language修改为%s\n", language)
+		fmt.Printf("读取到环境变量，默认$language修改为%s\n", language)
 	} else {
 		language = "en"
-		fmt.Printf("读取到环境变量，默认language修改为%s\n", language)
+		fmt.Printf("读取到环境变量，默认$language修改为%s\n", language)
 	}
 	if pattern = os.Getenv("pattern"); pattern != "" {
-		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
+		fmt.Printf("读取到环境变量，默认$pattern修改为%s\n", pattern)
 	} else {
 		pattern = "mp4"
-		fmt.Printf("读取到环境变量，默认pattern修改为%s\n", pattern)
+		fmt.Printf("读取到环境变量，默认$pattern修改为%s\n", pattern)
 	}
 
 	//files := GetFileInfo.GetAllFileInfo(root, pattern)
