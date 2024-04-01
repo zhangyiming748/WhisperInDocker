@@ -6,6 +6,8 @@ FROM golang:1.22.1-bookworm
 VOLUME /srt
 COPY srt /usr/local/bin/srt
 # RUN sed -i 's/deb.debian.org/mirrors4.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources
+# RUN sed -i 's/deb.debian.org/mirrors4.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
+# RUN sed -i 's/security.debian.org/mirrors4.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN apt update && apt full-upgrade
 RUN apt install -y ffmpeg python3 python3-pip vim nano mediainfo wget git
 # RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
