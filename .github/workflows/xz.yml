@@ -32,12 +32,7 @@ jobs:
         run: rm -rf /opt/hostedtoolcache
       - name: export
         run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar.xz
-        # run: docker save whisper:latest -o whisper.tar
-      # More assembly might be required: Docker logins, GPG, etc.
-      # It all depends on your needs.
-      - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: workspace_artifacts
-          path: ${{ github.workspace }}
-          permissions: read
+      - name: split
+        run: zip -r -s 700M whisper.zip whisper.tar.xz
+      - name: check
+        run: ls -ahl ${{ github.workspace }}
