@@ -9,7 +9,7 @@ docker run -dit --name=test --rm -v /e/video/srt:/srt -e language=ja whisper:v0.
 docker run -dit --name=test --rm -v /mnt/d/git/RemoveIntroOutro:/srt -e language=en whisper:latest bash
 docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro:/srt -e language=en whisper:latest srt
 docker run -dit --name=whisper --rm -v '/f/large  /未整理/[22sht.me]sdde-584:/srt' -e language=ja whisper:latest srt
-docker run -dit --name=whisper_en --rm -v '/f/srt:/srt' -e language=English whisper:latest srt
+docker run -dit --name=whisper_en --rm -v '/f/Telegram//joi:/srt' -e language=English whisper:latest srt
 docker run -dit --name=whisper_en --rm -v '/f/Telegram/en:/srt' -e language=English whisper:latest srt
 docker run -dit --name=whisper_ja --rm -v '/f/large/未整理/本庄优花:/srt' -e language=Japanese whisper:latest srt
 docker run -dit --name=whisper_de --rm -v '/f/Telegram/srt/cut/en:/srt' -e language=German whisper:latest srt

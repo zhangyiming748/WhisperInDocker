@@ -4,7 +4,7 @@ folder_path="/mnt/f/alist/telegram/joi"  # 替换为你要遍历的文件夹路�
 
 for file in "$folder_path"/*.mp4; do
     if [ -f "$file" ]; then
-        new_name=$(echo "$file" | sed 's/\[[^]]*\]//g')
+        new_name=$(echo "$file" | sed 's/ \[[^]]*\]//g')
         mv "$file" "$new_name"
     fi
 done
