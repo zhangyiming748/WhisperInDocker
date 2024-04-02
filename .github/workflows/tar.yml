@@ -33,7 +33,7 @@ jobs:
       - name: export
         run: docker save whisper:latest -o whisper.tar
       - name: zip
-        run : zip -r -s 1000000000 whisper.zip whisper.tar
+        run : zip -r -9 -s 999999999 whisper.zip whisper.tar
       # More assembly might be required: Docker logins, GPG, etc.
       # It all depends on your needs.
       - name: check
