@@ -41,8 +41,58 @@ jobs:
       # It all depends on your needs.
       - name: check
         run : ls -ahl ${{ github.workspace }}
-      - name: Upload Build Artifacts
+      - name: Upload aa
         uses: actions/upload-artifact@v4
         with:
           name: workspace_artifacts
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }} /whisper_part_aa
+      - name: Upload aa
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_aa
+      - name: Upload ab
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ab
+      - name: Upload ac
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ac
+      - name: Upload ad
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ad
+      - name: Upload ae
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ae
+      - name: Upload af
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_af
+      - name: Upload ag
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ag
+      - name: Upload ah
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ah
+      - name: Upload ai
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_ai
+      - name: Upload aj
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }} /whisper_part_aj
