@@ -36,3 +36,38 @@ jobs:
         run: zip -r -s 700M whisper.zip whisper.tar.xz
       - name: check
         run: ls -ahl ${{ github.workspace }}
+      - name: Upload z01
+        uses: actions/upload-artifact@v4
+        with:
+          name: z01
+          path: ${{ github.workspace }}/whisper.z01
+      - name: Upload z02
+        uses: actions/upload-artifact@v4
+        with:
+          name: z02
+          path: ${{ github.workspace }}/whisper.z02
+      - name: Upload z03
+        uses: actions/upload-artifact@v4
+        with:
+          name: z03
+          path: ${{ github.workspace }}/whisper.z03
+      - name: Upload z04
+        uses: actions/upload-artifact@v4
+        with:
+          name: z04
+          path: ${{ github.workspace }}/whisper.z04
+      - name: Upload z05
+        uses: actions/upload-artifact@v4
+        with:
+          name: z05
+          path: ${{ github.workspace }}/whisper.z05
+      - name: Upload z06
+        uses: actions/upload-artifact@v4
+        with:
+          name: z06
+          path: ${{ github.workspace }}/whisper.z06
+      - name: Upload zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip
+          path: ${{ github.workspace }}/whisper.zip
