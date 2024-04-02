@@ -32,8 +32,8 @@ jobs:
         run: rm -rf /opt/hostedtoolcache
       - name: export
         run: docker save whisper:latest -o whisper.tar
-      - name: coreutils
-        run : apt install -y coreutils
+#      - name: coreutils
+#        run : apt install -y coreutils
       - name: split
         run: split -n l/10 whisper.tar whisper_part_
         # cat archive_part_* > combined.tar
