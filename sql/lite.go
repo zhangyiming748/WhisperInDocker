@@ -16,7 +16,7 @@ func init() {
 }
 
 func SetEngine() {
-	db, _ = gorm.Open(sqlite.Open("whisper.db"), &gorm.Config{
+	db, _ = gorm.Open(sqlite.Open("/srt/whisper.db"), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Warn),
 		NowFunc: func() time.Time {
 			return time.Now().Local()
