@@ -1,5 +1,5 @@
 # .github/workflows/release.yml
-name: tar_releaser
+name: test_releaser
 
 on:
   pull_request:
