@@ -33,9 +33,11 @@ jobs:
       - name: export
         run: docker save whisper:latest -o whisper.tar
       - name: Upload release asset
-        uses: actions/upload-release-asset@v1
+        uses: svenstaro/upload-release-action@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ github.workspace }}/whisper.tar
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ github.workspace }}/whisper.tar
           asset_name: whisper
-          asset_content_type: application/octet-stream
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is Whisper.tar image"
