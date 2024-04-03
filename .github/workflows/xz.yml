@@ -32,8 +32,10 @@ jobs:
         run: rm -rf /opt/hostedtoolcache
       - name: export
         run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar.xz
+      - name: zip
+        run : zip --help
       - name: split
-        run: zip -r -s 500M --compress-level=0 artifact.zip whisper.tar.xz
+        run: zip -r -s 500M -0 artifact.zip whisper.tar.xz
       - name: check
         run: ls -ahl ${{ github.workspace }}
 
@@ -70,8 +72,8 @@ jobs:
         with:
           name: z05
           path: ${{ github.workspace }}/artifact.z05
-
           compression-level: 9 # max compression
+
       - name: Upload z06
         uses: actions/upload-artifact@v4
         with:
