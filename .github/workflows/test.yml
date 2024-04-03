@@ -5,9 +5,9 @@ on:
   pull_request:
   push:
     # run only against tags
-#    tags:
-#      - "*"
-    branches: [ "test" ]
+    tags:
+      - "test*"
+   # branches: [ "test" ]
 
 permissions:
   contents: write
