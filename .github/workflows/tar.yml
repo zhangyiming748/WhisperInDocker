@@ -46,48 +46,58 @@ jobs:
         with:
           name: aa
           path: ${{ github.workspace }}/whisper_part_aa
+          compression-level: 9 # max compression
       - name: Upload ab
         uses: actions/upload-artifact@v4
         with:
           name: ab
           path: ${{ github.workspace }}/whisper_part_ab
+          compression-level: 9 # max compression
       - name: Upload ac
         uses: actions/upload-artifact@v4
         with:
           name: ac
           path: ${{ github.workspace }}/whisper_part_ac
+          compression-level: 9 # max compression
       - name: Upload ad
         uses: actions/upload-artifact@v4
         with:
           name: ad
           path: ${{ github.workspace }}/whisper_part_ad
+          compression-level: 9 # max compression
       - name: Upload ae
         uses: actions/upload-artifact@v4
         with:
           name: ae
           path: ${{ github.workspace }}/whisper_part_ae
+          compression-level: 9 # max compression
       - name: Upload af
         uses: actions/upload-artifact@v4
         with:
           name: af
           path: ${{ github.workspace }}/whisper_part_af
+          compression-level: 9 # max compression
       - name: Upload ag
         uses: actions/upload-artifact@v4
         with:
           name: ag
           path: ${{ github.workspace }}/whisper_part_ag
+          compression-level: 9 # max compression
       - name: Upload ah
         uses: actions/upload-artifact@v4
         with:
           name: ah
           path: ${{ github.workspace }}/whisper_part_ah
+          compression-level: 9 # max compression
       - name: Upload ai
         uses: actions/upload-artifact@v4
         with:
           name: ai
           path: ${{ github.workspace }}/whisper_part_ai
+          compression-level: 9 # max compression
       - name: Upload aj
         uses: actions/upload-artifact@v4
         with:
           name: aj
           path: ${{ github.workspace }}/whisper_part_aj
+          compression-level: 9 # max compression
