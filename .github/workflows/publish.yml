@@ -27,7 +27,7 @@ jobs:
       - name: pwd
         run: pwd
       - name: build
-        run: docker build -t whisper:latest
+        run: docker build -t whisper:latest .
       - name: saveSpace
         run: rm -rf /opt/hostedtoolcache
       - name: export
