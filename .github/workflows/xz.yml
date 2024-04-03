@@ -33,7 +33,7 @@ jobs:
       - name: export
         run: docker save whisper:latest | xz --threads=0 -9e --memlimit-compress=0 > whisper.tar.xz
       - name: split
-        run: zip -r -s 700M whisper.zip whisper.tar.xz
+        run: zip -r -s 500M whisper.zip whisper.tar.xz
       - name: check
         run: ls -ahl ${{ github.workspace }}
       - name: Upload z01
@@ -71,6 +71,12 @@ jobs:
         with:
           name: z06
           path: ${{ github.workspace }}/whisper.z06
+          compression-level: 9 # max compression
+      - name: Upload z07
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip
+          path: ${{ github.workspace }}/whisper.z07
           compression-level: 9 # max compression
       - name: Upload zip
         uses: actions/upload-artifact@v4
