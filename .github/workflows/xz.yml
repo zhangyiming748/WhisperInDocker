@@ -75,8 +75,20 @@ jobs:
       - name: Upload z07
         uses: actions/upload-artifact@v4
         with:
-          name: zip
+          name: zip07
           path: ${{ github.workspace }}/whisper.z07
+          compression-level: 9 # max compression
+      - name: Upload z08
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip08
+          path: ${{ github.workspace }}/whisper.z08
+          compression-level: 9 # max compression
+      - name: Upload z09
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip09
+          path: ${{ github.workspace }}/whisper.z09
           compression-level: 9 # max compression
       - name: Upload zip
         uses: actions/upload-artifact@v4
