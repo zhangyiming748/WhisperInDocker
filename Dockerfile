@@ -42,4 +42,4 @@ CMD ["srt"]
 # docker run -itd --name=trans1 -v /d/srt:/srt zhangyiming748/use-whisper:v0.0.3 bash
 # docker run -idt --name=trans -v /d/srt:/srt -e APPID={your baidu appid} -e KEY={your baidu key} trans:v1 ash
 # docker run -itd --name=trans1 -v /d/srt:/srt use-whisper:v0.0.3
-# docker build -t zhangyiming748/whisper:apple0.0.2 .
+# docker build -t zhangyiming748/whisper:apple0.0.3 .
