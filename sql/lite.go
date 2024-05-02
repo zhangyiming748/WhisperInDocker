@@ -2,9 +2,12 @@ package sql
 
 import (
 	"fmt"
+	"github.com/zhangyiming748/WhisperInDocker/constant"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -16,7 +19,8 @@ func init() {
 }
 
 func SetEngine() {
-	db, _ = gorm.Open(sqlite.Open("/srt/whisper.db"), &gorm.Config{
+	file := strings.Join([]string{constant.GetRoot(), "whisper.db"}, string(os.PathSeparator))
+	db, _ = gorm.Open(sqlite.Open(file), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Warn),
 		NowFunc: func() time.Time {
 			return time.Now().Local()
