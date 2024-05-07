@@ -4,7 +4,7 @@ var (
 	root     string = "/data"
 	language string = "en"
 	pattern  string = "mp4"
-	model    string = "/root/model"
+	model    string = "medium"
 )
 
 func GetRoot() string {
