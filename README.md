@@ -29,9 +29,9 @@ docker run -dit --name=test --rm -v /e/video/srt:/srt -e language=ja whisper:v0.
 docker run -dit --name=test --rm -v /mnt/d/git/RemoveIntroOutro:/srt -e language=en whisper:latest bash
 docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro:/srt -e language=en whisper:latest srt
 docker run -dit --name=whisper --rm -v '/f/large  /未整理/[22sht.me]sdde-584:/srt' -e language=ja whisper:latest srt
-docker run -dit --name=whisper_en  -v '/mnt/f/ubuntu/jp/en:/srt' -e language=English whisper:latest srt
+docker run -dit --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
 docker run -dit --name=whisper_en -v '/Users/zen/Movies:/srt' -e language=English -e pattern=m4a whisper:latest bash
-docker run -dit --name=whisper_sp --rm -v '/c/Users/zen/Videos/sp:/srt' -e pattern=webm -e language=Spanish zhangyiming748/whisper:v0.0.1 srt
+docker run -dit --name=whisper_sp --rm -v '/c/Users/zen/Videos/test:/data' -e pattern=webm -e language=Spanish zhangyiming748/whisper:v0.0.1 srt
 docker run -dit --name=whisper_ja --rm -v '/f/srt:/srt' -e language=Japanese whisper:latest srt
 docker run -dit --name=whisper_ja --rm -v '/f/ubuntu/jp/ja:/data' -e language=Japanese whisper:latest srt
 docker run -dit --name=whisper_de --rm -v '/f/Telegram/srt/cut/en:/srt' -e language=German whisper:latest srt

@@ -2,26 +2,31 @@ FROM golang:1.22.2-bookworm
 #ARG http_proxy=http:192.168.1.20:8889
 #ARG https_proxy=http:192.168.1.20:8889
 VOLUME /data
-RUN mkdir /data/app
-WORKDIR /data/app
+RUN mkdir /root/app
+WORKDIR /root/app
+
 COPY . .
 RUN go env -w GO111MODULE=on
 RUN go env -w GOPROXY=https://goproxy.cn,direct
-RUN go build -o /usr/local/bin/srt main.go
+RUN go build -o /usr/local/bin/CreateSubtitle main.go
 RUN chmod +x install-retry.sh
 RUN sed -i 's/deb.debian.org/mirrors4.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list.d/debian.sources
 RUN apt update
-RUN ./install-retry.sh ffmpeg python3 python3-pip nano
+RUN apt install -y dos2unix
+RUN dos2unix ./install-retry.sh
+RUN mv install-retry.sh /usr/local/bin
+RUN install-retry.sh ffmpeg python3 python3-pip nano
 RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-WORKDIR /data/app/python/debian
-RUN pip install -r requirements.txt --break-system-packages
-RUN pip install openai-whisper --break-system-packages
-WORKDIR /data/app
-CMD ["srt"]
-# docker build -t whisper:latest .
+
+RUN tar xvf pip.tar
+RUN pip install  --find-links=./pip openai-whisper --break-system-packages
+
+RUN dos2unix entrypoint.sh
+RUN chmod +x entrypoint.sh
+# CMD ["whisper"]
+ENTRYPOINT ["/root/app/entrypoint.sh"]
+# docker build --progress=plain -t whisper:latest .
 # docker run -itd --name=whisper -v /mnt/f/ubuntu/jp/en:/srt whisper:latest srt
-# docker run -idt --name=trans -v /d/srt:/srt -e APPID={your baidu appid} -e KEY={your baidu key} trans:v1 ash
-# docker run -itd --name=trans1 -v /d/srt:/srt use-whisper:v0.0.3
-# ENTRYPOINT ["srt"]
-# docker build -t trans:latest .
-# docker build -t zhangyiming748/whisper:apple0.0.3 .
+# docker run -dit --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
+# docker run --name online -v /c/Users/zen/Videos/test/data:/data -dit golang:1.22.2-bookworm bash
+# docker run --name offline -v /c/Users/zen/Videos/test/data:/data -dit golang:1.22.2-bookworm bash

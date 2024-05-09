@@ -8,10 +8,11 @@
 *.db
 *.test
 *.out
-base.pt
+*.pt
 .DS_Store
 .idea
 vendor
 python
 go.work
 /srt
+*.tar
