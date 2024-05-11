@@ -47,7 +47,7 @@ func main() {
 		slog.Info("文件", slog.String("文件名", file))
 		//whisper true.mp4 --model base --language English --model_dir /Users/zen/Whisper --output_format srt
 		//cmd := exec.Command("whisper", file.FullPath, "--model", level, "--model_dir", location, "--language", language, "--output_dir", root, "--verbose", "True")
-		cmd := exec.Command("whisper", file, "--threads", "0", "--model", constant.GetModel(), "--model_dir", "/root/app", "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", constant.GetLanguage(), "--output_dir", constant.GetRoot(), "--verbose", "True")
+		cmd := exec.Command("whisper", file, "--threads", "0", "--model", constant.GetModel(), "--model_dir", constant.GetRoot(), "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", constant.GetLanguage(), "--output_dir", constant.GetRoot(), "--verbose", "True")
 		err := util.ExecCommand(cmd)
 		if err != nil {
 			slog.Error("当前字幕生成错误", slog.String("命令原文", fmt.Sprint(cmd)), slog.String("错误原文", err.Error()))
