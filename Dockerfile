@@ -26,7 +26,4 @@ RUN chmod +x entrypoint.sh
 # CMD ["whisper"]
 ENTRYPOINT ["/root/app/entrypoint.sh"]
 # docker build --progress=plain -t whisper:latest .
-# docker run -itd --name=whisper -v /mnt/f/ubuntu/jp/en:/srt whisper:latest srt
-# docker run -dit --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
-# docker run --name online -v /c/Users/zen/Videos/test/data:/data -dit golang:1.22.2-bookworm bash
-# docker run --name offline -v /c/Users/zen/Videos/test/data:/data -dit golang:1.22.2-bookworm bash
+# docker run -dit --rm --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
