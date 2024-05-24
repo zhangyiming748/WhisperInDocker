@@ -6,7 +6,7 @@ on:
   push:
     # run only against tags
     tags:
-      - "publish*"
+      - "public*"
     # branches: [ "master" ]
 
 permissions:
@@ -24,20 +24,8 @@ jobs:
           fetch-depth: 0
       - name: go
         run: go build -o srt main.go
-      - name: pwd
-        run: pwd
-      - name: build
-        run: docker build -t whisper:latest .
-      - name: saveSpace
-        run: rm -rf /opt/hostedtoolcache
-      - name: export
-        run: docker save whisper:latest -o whisper.tar
-      - name: Upload release asset
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/whisper.tar
-          asset_name: whisper
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: "This is Whisper.tar image"
+      - name: release
+        run: |
+          time_var=$(date +"%Y%m%d-%H%M%S")
+          gh release create $time_var --generate-notes
+          gh release upload $time_var ${{ github.workspace }}/srt

@@ -61,7 +61,8 @@ jobs:
       - name: release
         run: |
           time_var=$(date +"%Y%m%d-%H%M%S")
-          gh release upload $time_var whisper.tar.xz
+          gh release create $time_var --generate-notes
+          gh release upload $time_var ${{ github.workspace }}/whisper.tar.xz
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         shell: bash
