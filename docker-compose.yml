@@ -1,15 +1,21 @@
-version: "3.9"
-name: use-whisper
+name: whisper
 services:
-  golang1.22.3-bookworm:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  whisper:
     stdin_open: true
     tty: true
-    container_name: test3
+    deploy:
+      resources:
+        limits:
+          cpus: 4
+          memory: 4096M
+    container_name: whisper_en
     volumes:
-      - /path/to/model:/model
-      - /path/to/videos:/data
-#    image: golang:1.22.0-bookworm
-#    command: bash
+      - /home/zen/github/WhisperInDocker/model:/model
+      - /home/zen/docker/yt-dlp:/data
+    environment:
+      - root=/data
+      - language=English
+      - pattern=webm
+      - model=large
+      - location=/model
+    image: whisper:latest
