@@ -1,0 +1,15 @@
+version: "3.9"
+name: use-whisper
+services:
+  golang1.22.3-bookworm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    container_name: test3
+    volumes:
+      - /path/to/model:/model
+      - /path/to/videos:/data
+#    image: golang:1.22.0-bookworm
+#    command: bash

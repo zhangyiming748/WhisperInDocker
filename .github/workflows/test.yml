@@ -1,0 +1,48 @@
+# .github/workflows/release.yml
+name: test_releaser
+
+on:
+  pull_request:
+  push:
+    # run only against tags
+    tags:
+      - "test*"
+   # branches: [ "test" ]
+
+permissions:
+  contents: write
+  # packages: write
+  # issues: write
+
+jobs:
+  dockerbuilder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: go
+        run: go build -o srt main.go
+      - name: pwd
+        run: pwd
+#      - name: build
+#        run: docker build -t whisper:latest /home/runner/work/WhisperInDocker/WhisperInDocker
+      - name: saveSpace
+        run: rm -rf /opt/hostedtoolcache
+#      - name: export
+#        run: docker save whisper:latest -o whisper.tar
+      - name: coreutils
+        run : sudo apt install -y coreutils
+#      - name: split
+#        run: split -n l/10 whisper.tar whisper_part_
+        # cat archive_part_* > combined.tar
+      # More assembly might be required: Docker logins, GPG, etc.
+      # It all depends on your needs.
+      - name: check
+        run : ls -ahl ${{ github.workspace }}
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: workspace_artifacts
+          path: ${{ github.workspace }}

@@ -1,0 +1,11 @@
+model
+data
+app
+.idea
+.DS_Store
+.github
+.gitignore
+Dockerfile
+docker-compose.yml
+LICENSE
+*.md
