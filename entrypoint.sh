@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-CreateSubtitle
+go run /app/main.go
 # trans
 # conv

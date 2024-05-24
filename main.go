@@ -72,7 +72,7 @@ func setLog() {
 	file := strings.Join([]string{constant.GetRoot(), "whisper.log"}, string(os.PathSeparator))
 	logf, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0777)
 	if err != nil {
-		panic(err)
+		fmt.Printf("日志文件创建错误:%v\n", err)
 	}
 	logger := slog.New(slog.NewJSONHandler(io.MultiWriter(logf, os.Stdout), &opt))
 	slog.SetDefault(logger)

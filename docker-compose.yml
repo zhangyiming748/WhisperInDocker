@@ -6,12 +6,13 @@ services:
     deploy:
       resources:
         limits:
-          cpus: 4
+          cpus: "4"
           memory: 4096M
     container_name: whisper_en
     volumes:
-      - /home/zen/github/WhisperInDocker/model:/model
+      - /home/zen/docker/model:/model
       - /home/zen/docker/yt-dlp:/data
+      - /home/zen/github/WhisperInDocker:/app
     environment:
       - root=/data
       - language=English

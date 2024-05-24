@@ -4,23 +4,20 @@ FROM golang:1.22.3-bookworm
 # 声明视频文件夹
 VOLUME /data
 # 声明程序文件夹
-# VOLUME /app
+VOLUME /app
 # 声明模型文件夹
 VOLUME /model
 
-RUN mkdir /root/app
-WORKDIR /root/app
-COPY . /root/app
 RUN go env -w GO111MODULE=on
 RUN go env -w GOPROXY=https://goproxy.cn,direct
-RUN go build -o /usr/local/bin/CreateSubtitle main.go
+# RUN go build -o /usr/local/bin/CreateSubtitle main.go
 
 COPY debian.sources /etc/apt/sources.list.d/
-RUN chmod +x install-retry.sh
+COPY install-retry.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/install-retry.sh
 RUN apt update
 RUN apt install -y dos2unix
-RUN dos2unix ./install-retry.sh
-RUN mv install-retry.sh /usr/local/bin
+RUN dos2unix /usr/local/bin/install-retry.sh
 RUN install-retry.sh ffmpeg python3 python3-pip nano
 RUN apt clean
 
@@ -33,4 +30,4 @@ RUN chmod +x entrypoint.sh
 ENTRYPOINT ["/root/app/entrypoint.sh"]
 # docker build --progress=plain -t whisper:latest .
 # docker run -dit --rm --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
-# sudo docker run -dit --cpus=4 --memory=4096M --name test -v /home/zen/github/WhisperInDocker/model:/model -v /home/zen/docker/yt-dlp:/data -e root=/data -e language=English -e pattern=webm -e model=large whisper:latest
+# sudo docker run -dit --cpus=4 --memory=4096M --name test -v /home/zen/github/WhisperInDocker:/app -v /home/zen/docker/model:/model -v /home/zen/docker/yt-dlp:/data -v /home/zen/docker/cache:/root/.cache -e root=/data -e language=English -e pattern=webm -e model=large whisper:latest
