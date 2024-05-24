@@ -1,6 +1,7 @@
 # WhisperInDocker
 
 使用openaiwhisper批量生成字幕
+
 # 和程序有关的部分放在/app目录 和生成后的内容有关的放在/data里
 # model
 
@@ -17,25 +18,31 @@ https://huggingface.co/ggerganov/whisper.cpp/tree/main
 
 
 
-# usage 
-```shell
-docker commit -a zen -m "whisper可用" -p whisper useWhisper:v0.0.1
-# 需要变量language
-# 需要映射/srt
+# usage
 
-docker run -dit --name=test -v /e/video/srt:/srt -e language=en usewhisper:v0.0.1 srt
-docker load -i whisper.tar
-docker run -dit --name=test --rm -v /e/video/srt:/srt -e language=ja whisper:v0.0.1 srt
-docker run -dit --name=test --rm -v /mnt/d/git/RemoveIntroOutro:/srt -e language=en whisper:latest bash
-docker run -dit --name=test --rm -v /d/git/RemoveIntroOutro:/srt -e language=en whisper:latest srt
-docker run -dit --name=whisper --rm -v '/f/large  /未整理/[22sht.me]sdde-584:/srt' -e language=ja whisper:latest srt
-docker run -dit --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
-docker run -dit --name=whisper_en -v '/Users/zen/Movies:/srt' -e language=English -e pattern=m4a whisper:latest bash
-docker run -dit --name=whisper_sp --rm -v '/c/Users/zen/Videos/test:/data' -e pattern=webm -e language=Spanish zhangyiming748/whisper:v0.0.1 srt
-docker run -dit --name=whisper_ja --rm -v '/f/srt:/srt' -e language=Japanese whisper:latest srt
-docker run -dit --name=whisper_ja --rm -v '/f/ubuntu/jp/ja:/data' -e language=Japanese whisper:latest srt
-docker run -dit --name=whisper_de --rm -v '/f/Telegram/srt/cut/en:/srt' -e language=German whisper:latest srt
-docker run -dit --name=whisper_ru --rm -v '/f/alist/bilibili/ru:/srt' -e language=Russian whisper:latest srt
-docker run -dit --name=whisper_en --cpus=1 --memory=2048M --rm -v '/c/Users/zen/Videos/Nicole Aniston:/srt' -v /d/git/WhisperInDocker:/data -e language=English whisper:latest srt
++ 和程序有关的部分放在/app目录 和生成后的内容有关的放在/data里
 
+```yml
+name: whisper
+services:
+  whisper:
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        limits:
+          cpus: "4"
+          memory: 4096M
+    container_name: whisper_en
+    volumes:
+      - /path/to/openai/whisper/model:/model 
+      - /path/to/videos:/data
+      - /path/to/WhisperInDocker:/app
+    environment:
+      - root=/data # 视频目录
+      - language=English # 视频语言
+      - pattern=webm # 视频格式
+      - model=large # 模型选择
+      - location=/model # 模型位置
+    image: whisper:latest
 ```

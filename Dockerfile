@@ -30,4 +30,4 @@ RUN pip install openai-whisper --break-system-packages --no-cache-dir
 ENTRYPOINT ["/app/entrypoint.sh"]
 # docker build --progress=plain -t whisper:latest .
 # docker run -dit --rm --name=whisper_en  -v '/c/Users/zen/Videos/test:/data' -e language=English whisper:latest
-# sudo docker run -dit --cpus=4 --memory=4096M --name test -v /home/zen/github/WhisperInDocker:/app -v /home/zen/docker/model:/model -v /home/zen/docker/yt-dlp:/data -v /home/zen/docker/cache:/root/.cache -e root=/data -e language=English -e pattern=webm -e model=large whisper:latest
+# sudo docker run -dit --cpus=4 --memory=4096M --name test -v /home/zen/github/WhisperInDocker:/app -v /home/zen/docker/model:/model -v /home/zen/docker/yt-dlp:/data -e root=/data -e language=English -e pattern=webm -e model=large whisper:latest
