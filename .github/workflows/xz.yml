@@ -60,7 +60,7 @@ jobs:
           compression-level: 9 # max compression
       - name: release
         run: |
-          gh release upload ${{github.event.release.tag_name}} whisper.tar.xz
+          gh release upload ${{ GITHUB_JOB }} whisper.tar.xz
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
         shell: bash
