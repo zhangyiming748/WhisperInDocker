@@ -1,10 +1,10 @@
 package constant
 
 var (
-	root     string = "/data"
+	root     string = "/mnt/c/Users/zen/Github/FastYt-dlp/joi"
 	language string = "en"
 	pattern  string = "mp4"
-	model    string = "medium"
+	model    string = "large"
 )
 
 func GetRoot() string {
