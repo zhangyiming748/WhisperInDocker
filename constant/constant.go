@@ -1,10 +1,11 @@
 package constant
 
 var (
-	root     string = "/mnt/c/Users/zen/Github/FastYt-dlp/joi"
+	root     string = "E:\\pikpak\\MILF"
 	language string = "en"
 	pattern  string = "mp4"
-	model    string = "large"
+	//model    string = "large"
+	model string = "base"
 )
 
 func GetRoot() string {
