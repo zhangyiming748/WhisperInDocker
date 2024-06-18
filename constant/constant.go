@@ -1,7 +1,7 @@
 package constant
 
 var (
-	root     string = "E:\\pikpak\\MILF"
+	root     string = "/Users/zen/Github/FastYt-dlp"
 	language string = "en"
 	pattern  string = "mp4"
 	//model    string = "large"

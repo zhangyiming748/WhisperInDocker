@@ -51,7 +51,7 @@ func main() {
 		log.Printf("文件名:%v\n", file)
 		//whisper true.mp4 --model base --language English --model_dir /Users/zen/Whisper --output_format srt
 		//cmd := exec.Command("whisper", file.FullPath, "--model", level, "--model_dir", location, "--language", language, "--output_dir", root, "--verbose", "True")
-		cmd := exec.Command("whisper", file, "--threads", "0", "--model", constant.GetModel(), "--model_dir", constant.GetRoot(), "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", constant.GetLanguage(), "--output_dir", constant.GetRoot(), "--verbose", "True")
+		cmd := exec.Command("whisper", file, "--model", constant.GetModel(), "--model_dir", constant.GetRoot(), "--output_format", "srt", "--prepend_punctuations", ",.?", "--language", constant.GetLanguage(), "--output_dir", constant.GetRoot(), "--verbose", "True")
 		err := util.ExecCommand(cmd)
 		if err != nil {
 			log.Printf("当前字幕生成错误\t命令原文:%v\t错误原文:%v\n", cmd.String(), err.Error())
